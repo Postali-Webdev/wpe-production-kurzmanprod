@@ -24,9 +24,7 @@
                 @include respond(desktop) {
                     margin-bottom: 50px;
                     width: 100%;
-                    height: -webkit-fit-content;
-                    height: -moz-fit-content;
-                    height: fit-content;
+                    height: auto;
                 }
             }
 
