@@ -1,0 +1,114 @@
+/**
+ * Footer Styles
+ *
+ * @package Postali Child
+ * @author Postali LLC
+**/
+
+.footer {
+    padding-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    background:$white;
+    
+    p {
+        font-size: 16px;
+        line-height: 130%;
+    }
+
+    .container {
+        .columns {
+            .column-25 {
+                width: 16%;
+                
+                @include respond(desktop) {
+                    margin-bottom: 50px;
+                    width: 100%;
+                }
+            }
+
+            .column-75 {
+                width: 75%;
+                gap: 10%;
+                align-items: flex-start;
+                flex-direction: row;
+
+                @include respond(desktop-lg) {
+                    width:73%;
+                }
+
+                @include respond(desktop) {
+                    width:100%;
+                }
+                
+                .footer-blocks {
+                    width: 45%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    
+                    @include respond(phone) {
+                        width: 100%;
+                    }
+
+                    &.menus {
+                        .column-50 {
+                            &:last-of-type {
+                                @include respond(tab-port) {
+                                    margin-top: 30px;
+                                }
+                            }
+                        }
+                    }
+
+                    p.footer-title {
+                        width: 100%;
+                        font-family: $serif;
+                        margin-bottom: 10px !important;
+                        text-transform: uppercase;
+                        letter-spacing: 4px;
+                        font-size: 18px;
+                    }
+
+                    .menu {
+                        list-style-type: none;
+                        margin: 0;
+
+                        li {
+                            margin: 0 0 12px;
+                            
+                            a {
+                                font-family: $sans;
+                                font-size: 16px;
+                                color:$dkblue;
+                                line-height: 100%;
+
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .utility {
+                border-top: 1px solid gray;
+                padding-top: 20px;
+                margin-bottom: 10px;
+                align-items: center;
+
+                p {
+                    font-size: 14px;
+                    margin-bottom: 0 !important;
+                }
+
+                .postali {
+                    max-width: 240px;
+                }
+            }
+        }
+    }
+}

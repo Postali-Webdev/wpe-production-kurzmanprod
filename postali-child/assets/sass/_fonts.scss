@@ -1,0 +1,315 @@
+/**
+ * Web Font Styles, H Styles, Body Text Styles
+ *
+ * @package Postali Child
+ * @author Postali LLC
+**/
+
+/* Fonts */
+body, h1, h2, h3, h4, h5, h6, p, a, ul {
+    // color: $body-text-color;
+} 
+p, a, ul, ol {
+
+}
+ul li, ol li {
+    margin: 0 0 0 20px;
+    font-size: 18px;
+}
+dl, blockquote, img {
+
+}
+
+a {
+    text-decoration:none;
+    transition:$trans;
+    &:hover {
+        // color:$lt-red;
+        text-decoration:none;
+    }
+}
+
+p {
+    font-size:20px;
+    line-height: 180%;
+    margin-bottom:30px !important;
+    font-family: $sans;
+    color:$dkblue;
+    font-weight: 400;
+
+    a {
+        font-family: inherit;
+        font-size: inherit;
+        text-decoration: underline;
+        color:inherit;
+
+        &:hover {
+            text-decoration: none;
+            color:$emerald;
+        }
+    }
+
+    &.serif {
+        font-family: $serif;
+    }
+
+    &.caps {
+        text-transform: uppercase;
+    }
+
+    &.sm {
+        font-size: 16px;
+    }
+
+    &.lrg {
+        font-size: 24px;
+        line-height: 125%;
+
+        @include respond(phone) {
+            font-size: 20px;
+        }
+    }
+
+    &.xlg {
+        font-size: 52px;
+        line-height: 125%;
+
+        @include respond(phone) {
+            font-size: 9vw;
+        }
+        
+        span {
+            font-style: italic;
+            color:$ltblue;
+        }
+    }
+
+    &.spaced {
+        letter-spacing: 5px;
+    }
+
+    &#breadcrumbs {
+        padding: 0;
+        font-weight: 400;
+        font-size: 14px;
+
+        a {
+            color: $blk;
+        }
+    }
+}
+
+.body-container {
+    .btn {
+        display:inline-block;
+        padding:15px 40px;
+        background-color: $ltblue;
+        text-decoration:none;
+        transition:$trans;
+        font-family: $sans;
+        font-size: 14px;
+        letter-spacing: 2px;
+        border-radius: 50px;
+        color:$white;
+        font-weight: 600;
+        position: relative;
+        z-index: 1;
+        text-transform: uppercase;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+
+        &.gradient {
+            background: rgb(3,70,69);
+            background: linear-gradient(236deg, rgba(3,70,69,1) 0%, rgba(16,53,71,1) 100%);
+            background-color: none;
+
+            &::after {
+                background: rgb(3,70,69);
+                background: linear-gradient(236deg, rgba(3,70,69,1) 0%, rgba(16,53,71,1) 100%);
+                background-color: none;
+            }
+        }
+
+        &.white {
+            background-color: $white !important;
+            color:$dkblue;
+            transition: $trans;
+            margin-bottom: 5px;
+
+            &::after {
+                background-color: $white;
+            }
+
+            &:hover {    
+                color:$white;
+                            
+                &::after {
+                    background: linear-gradient(236deg, rgba(3,70,69,1) 0%, rgba(16,53,71,1) 100%);
+                    transform:scale(100%, 100%);
+                }
+            }
+            
+        }
+    
+        &::after {
+            position: absolute;
+            background-color: $ltblue;
+            border-radius: 50px;
+            border-radius: 50px;
+            content: "";
+            top:0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            transition: .3s ease all;
+        }
+        
+        &:hover {
+            &::after {
+                transform:scale(110%, 120%);
+            }
+        }
+    }
+
+    ul {
+        margin: 0;
+        list-style-type: none;
+        margin-bottom: 20px;
+        
+        li {
+            font-size:20px;
+            line-height: 180%;
+            font-family: $sans;
+            margin-left: 20px;
+            position: relative;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color:$dkblue;
+
+            &::before {
+                content:"";
+                position: absolute;
+                background:$ltblue;
+                left: -20px;
+                top: 13px;
+                height: 8px;
+                width: 11px;
+                -webkit-clip-path: polygon(0 1%, 70% 0, 100% 100%, 30% 100%);
+                        clip-path: polygon(0 1%, 70% 0, 100% 100%, 30% 100%);
+            }
+
+            a {
+                font-family: inherit;
+                color:inherit;
+                text-decoration: underline;
+            }
+        }
+
+        ul {
+            margin-left: 0;
+
+            li {
+                font-weight: normal !important;
+                font-style: italic;
+                margin-bottom: 0;
+
+                &:nth-of-type(2) {
+                    margin-top: 20px;
+                }
+
+                &::before {
+                    display: none !important;
+                }
+            }
+
+            &:first-of-type {
+                ul {
+                    li {
+                        font-style: normal !important;
+                    }
+                }
+            }  
+
+            ul {
+                li {
+                    margin-top:  0 !important;
+                }
+            }
+
+            &:last-of-type {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    ol {
+        margin: 0 0 30px;
+        
+        li {
+            font-size:17px;
+            line-height: 180%;
+            font-family: $sans;
+            margin-left: 20px;
+            position: relative;
+            font-weight: 200;
+            margin-bottom: 7px;
+        }
+    }
+
+    h1 {
+        font-family: $sans;
+        font-size: 54px;
+        text-transform: none;
+        font-weight: 800;
+        color: $dkblue;
+        
+        @include respond(phone) {
+            line-height: 90%;
+            margin-bottom: 30px;
+            font-size: 10vw;
+        }
+
+        @include respond(phone-sm) {
+            font-size: 13vw;
+        }
+    }
+    
+    h2 {
+        font-family: $serif;
+        font-size: 60px;
+        color:$dkblue;
+        font-weight: 400;
+        margin-bottom: 40px;
+        line-height: 105%;
+
+        &:not(:first-of-type) {
+            margin-top: 30px;
+        }
+
+
+        @include respond(phone) {
+            font-size: 10vw;
+        }    
+    }
+
+    h3 {
+        font-family: $serif;
+        font-size: 36px;
+        color:$dkblue;
+        font-weight: 400;
+        margin-bottom: 20px;
+        line-height: 125%;
+        margin-top: 20px;
+    }
+
+    h4 {
+        font-family: $sans;
+        font-size: 24px;
+        color:$dkblue;
+        font-weight: 800;
+        margin-bottom: 20px;
+        line-height: 125%;
+    }
+}
