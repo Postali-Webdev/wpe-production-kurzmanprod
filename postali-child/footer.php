@@ -33,11 +33,15 @@
                     <div class="footer-blocks menus">
                         <div class="column-50">
                             <p class="footer-title">Practice Areas</p>
-                            <?php wp_nav_menu( [ 'container' => false, 'theme_location' => 'footer-practice' ] ); ?> 
+                            <nav role="navigation">
+                            <?php wp_nav_menu( [ 'container' => false, 'theme_location' => 'footer-practice' ] ); ?>
+                            </nav> 
                         </div>
                         <div class="column-50">
                             <p class="footer-title">Navigation</p>
+                            <nav role="navigation">
                             <?php wp_nav_menu( [ 'container' => false, 'theme_location' => 'footer-nav' ] ); ?> 
+                            </nav>
                         </div>
                     </div>
                 </div>
