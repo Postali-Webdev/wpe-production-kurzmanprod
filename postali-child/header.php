@@ -69,7 +69,6 @@
                     });
 
                 </script>
-                <nav role="navigation">
                 <?php
                     $args = array(
                         'container' => false,
@@ -77,11 +76,9 @@
                     );
                     wp_nav_menu( $args );
                 ?>
-                </nav>
             </div>
 
             <div class="header-menu-nav-mobile">
-                <nav role="navigation">
                 <?php
                     $args = array(
                         'container' => false,
@@ -89,7 +86,6 @@
                     );
                     wp_nav_menu( $args );
                 ?>
-                </nav>
             </div>
 	
             <div id="header-top_mobile">
