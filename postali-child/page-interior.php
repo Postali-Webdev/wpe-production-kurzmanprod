@@ -55,12 +55,57 @@ get_header();?>
             <div class="spacer-60"></div>
             <div class="columns">
 
+            <?php 
+                $terms = get_the_terms( $post->ID, 'practice_areas');
+                foreach ( $terms as $term ) {
+                    $termID[] = $term->slug;
+                    $termName = $term->name;
+                }
+                $cat = $termID[0]; 
+                $fixed_cat = str_replace('-', '_', $cat);    
+                $chair = 'sub_categories_'. $fixed_cat .'_chair';
+            ?>
+
             <h2><?php echo $term_name; ?> Attorneys</h2>
             <div class="spacer-break"></div>
             <div class="attorneys hidden">
             <div class="columns attorney-list">
 
                 <?php 
+                    $args_chair = [
+                        'post_type' => 'attorneys',
+                        'post_status' => 'publish',
+                        'tax_query' => array(
+                            array (
+                                'taxonomy' => 'practice_areas',
+                                'field' => 'slug',
+                                'terms' => esc_html($cat),
+                            )
+                        ),
+                        'meta_key'		=> $chair,
+                        'meta_value'	=> '"yes"',
+                        'meta_compare'	=> 'LIKE',
+                        'posts_per_page' => -1,
+                    ];
+
+                    $get_chair = new WP_Query( $args_chair );
+                    if( $get_chair->have_posts() ) :
+                    while( $get_chair->have_posts() ): $get_chair->the_post();     
+                    ?>
+
+                        <a class="practice-attorney" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">        
+                            <div class="attorney-headshot">
+                            <?php if (has_post_thumbnail( $post->ID ) ): ?>
+                            <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
+                                <img src="<?php echo $image[0]; ?>" alt="<?php the_title(); ?>">
+                            <?php endif; ?>
+                            </div>
+                            <p><strong><?php the_title(); ?></strong></p>
+                            <p class="caps spaced serif"><?php the_field('title'); ?><?php if (get_field($chair)) { ?>, Chair <?php } ?></p>
+                        </a>
+
+                    <?php endwhile;
+                    endif;
 
                     $post_ids = wp_list_pluck( $get_chair->posts, 'ID' );
 
