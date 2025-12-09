@@ -1,91 +1,3 @@
-<?php
-/**
- * Template Name: Practice Area Parent
- * @package Postali Child
- * @author Postali LLC
-**/
-
-$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-get_header();?>
-
-<div class="body-container">
-
-    <section class="page-banner" style="background:url('<?php echo $image[0]; ?>');">
-        <div class="container">
-            <?php if ( function_exists('yoast_breadcrumb') ) {yoast_breadcrumb('<p id="breadcrumbs">','</p>');} ?> 
-            <div class="spacer-90"></div>
-            <div class="columns">
-                <div class="column-50">
-                    <h1>
-                        <?php
-                        $value = get_the_title();
-                        echo strtok($value, " "); // Test
-                        ?>    
-                        <span>
-                        <?php
-                        echo substr(strstr($value," "), 1);
-                        ?>
-                        </span>
-                    </h1>
-                    <div class="spacer-60"></div>
-                    <a href="#related-attorneys" class="btn related-btn">Related Attorneys</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="body-top">
-        <div class="container">
-            <div class="columns">
-                <div class="column-66">
-                    <?php the_field('content_block_top'); ?>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="additional">
-        <div class="container">
-        <span id="first"></span>
-        <div class="hidden">
-
-            <?php if(get_field('add_call_out_block')) { ?>
-            <div class="call-out">
-                <div class="columns">
-                    <div class="column-50 call-out-image">
-                    <?php 
-                    $image = get_field('call_out_image');
-                    if( !empty( $image ) ): ?>
-                        <div class="call-out-img-container">
-                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-                        </div>
-                    <?php endif; ?>
-                    </div>
-                    <div class="column-50 call-out-copy">
-                        <h2><?php the_field('call_out_headline'); ?></h2>
-                        <p class="subhead"><?php the_field('call_out_subheadline'); ?></p>
-                        <?php the_field('call_out_copy'); ?>
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
-
-            <div class="body-bottom">
-                <div class="columns">
-                    <div class="column-50 center">
-                        <?php the_field('content_block_bottom'); ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <?php if(get_field('content_block_bottom')) { ?>
-        <div class="more"><p class="show">Read More</p><p class="hide"><a href="#first">Close Details</a></p> <a href="#first"><span class="icon-accordion-expand-and-collapse-icon"></span></a></div>
-        <?php } ?>
-        </div>
-
-    </section>    
-
     <section class="attorneys lined" id="related-attorneys">
         <div class="container">
             <div class="spacer-60"></div>
@@ -101,8 +13,6 @@ get_header();?>
                 $fixed_cat = str_replace('-', '_', $cat);    
                 $chair = 'sub_categories_'. $fixed_cat .'_chair';
             ?>
-
-            
 
             <h2><?php echo $termName; ?> Attorneys</h2>
             <div class="spacer-break"></div>
@@ -226,45 +136,3 @@ get_header();?>
             <div class="spacer-60"></div>
         </div>
     </section>
-
-    <?php if(get_field('add_related_services')) { ?>
-    <section class="lined" id="related-services">
-        <div class="container">
-            <div class="spacer-60"></div>
-            <div class="columns">
-                <div class="column-full">
-                    <div class="related-services">
-                        <?php if( have_rows('related_services') ): ?>
-                        <h2>Related Services</h2>
-                        <div class="spacer-break"></div>
-                        
-                        <div class="related hidden">
-                        <?php while( have_rows('related_services') ): the_row(); ?>  
-                            <a class="btn white" href="<?php the_sub_field('page_link'); ?>" <?php if (get_sub_field('external_link') == 'yes') { ?>target="blank"<?php } ?>>
-                                <?php the_sub_field('link_title'); ?>
-                            </a>
-                        <?php endwhile; ?>
-                        <div class="spacer-30"></div>
-                        </div>
-                        
-                        <div class="more"><p class="show">Read More</p><p class="hide">Close Details</p> <span class="icon-accordion-expand-and-collapse-icon"></span></div>
-
-                        <?php endif; ?> 
-                    </div>
-                </div>
-            </div>
-            <div class="spacer-60"></div>
-        </div>
-    </section>
-    <?php } ?>
-
-    <div class="spacer-60"></div>
-
-    <?php get_template_part('block','contact-cta'); ?>
-
-    <div class="spacer-90"></div>
-
-</div>
-
-<?php get_footer();?>
-

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Interior
+ * Template Name: Practice Area Child
  * @package Postali Child
  * @author Postali LLC
 **/
@@ -37,6 +37,8 @@ get_header();?>
             </div>
         </div>
     </section>
+
+    <?php get_template_part('block','related-attorneys'); ?>
 
     <?php get_template_part('block','contact-cta'); ?>
 
