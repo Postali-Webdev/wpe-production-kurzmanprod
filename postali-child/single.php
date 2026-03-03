@@ -12,7 +12,7 @@ get_header();?>
  
     <section class="page-banner" style="background:url('/wp-content/uploads/2025/08/header-blog.jpg);">
         <div class="container">
-            <p id="breadcrumbs"><span><span><a href="/">Homepage</a></span> &gt; <span><a href="/news/">News & Resources</a></span> &gt; <span class="breadcrumb_last" aria-current="page">New York’s Prompt Payment Act Amendments</span></span></p>
+            <p id="breadcrumbs"><span><span><a href="/">Homepage</a></span> &gt; <span><a href="/news/">News & Resources</a></span> &gt; <span class="breadcrumb_last" aria-current="page"><?php the_title(); ?></span></span></p>
             <div class="spacer-90"></div>
             <div class="columns">
                 <div class="column-50 block">
