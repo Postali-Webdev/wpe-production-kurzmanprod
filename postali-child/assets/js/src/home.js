@@ -22,14 +22,14 @@ jQuery( function ( $ ) {
 		// set cookie
 		setTimeout( function(){
 			Cookies.set('animate', 'yes');
-		},8000);
+		},4000);
 		
 	});
 	
 	$(document).ready(function () {
 		setTimeout( function(){
 			$('.logo-animate').css("display", "none");
-		},8000);
+		},4000);
 	});
 
     $('.accordion-top .accordion_title').click(function(){
